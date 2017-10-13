@@ -7,10 +7,17 @@ script_home="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 
 # Add solarized colors for vim if not present
-if [ ! -f $HOME/.vim/colors/solarized.vim ]; then
-     curl -fLo $HOME/.vim/colors/solarized.vim --create-dirs \
-     https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim
+# if [ ! -f $HOME/.vim/colors/solarized.vim ]; then
+#      curl -fLo $HOME/.vim/colors/solarized.vim --create-dirs \
+#      https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim
+# fi
+
+# Add vim-plug. Necessary for vim plugins
+if [ ! -f $HOME/.vim/autoload/plug.vim ]; then
+    curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+    
 
 # Symlink all dotfiles to the home directory
 for i in .vimrc .tmux.conf;
