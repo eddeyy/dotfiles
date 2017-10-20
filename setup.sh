@@ -18,6 +18,14 @@ if [ ! -f $HOME/.vim/autoload/plug.vim ]; then
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
     
+# Install fish-shell
+if [ ! -f $HOME/.config/fish ]; then
+    sudo apt-get install fish
+    # Install fisherman
+    curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+    fish plungin_install.fish
+fi
+
 
 # Symlink all dotfiles to the home directory
 for i in .vimrc .tmux.conf;
