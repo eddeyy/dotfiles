@@ -32,3 +32,5 @@ for i in .vimrc .tmux.conf;
 do
     ln $params $script_home/$i $HOME/$i
 done
+
+ln $params $script_home/config.fish $HOME/.config/fish/config.fsh
