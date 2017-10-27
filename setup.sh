@@ -23,7 +23,7 @@ if [ ! -f $HOME/.config/fish ]; then
     sudo apt-get install fish
     # Install fisherman
     curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-    fish plungin_install.fish
+    fish ./plungin_install.fish
 fi
 
 
