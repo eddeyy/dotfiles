@@ -52,35 +52,64 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
+set title
+set nobackup
+set noswapfile
 
 " Specifiy a color scheme.
-let g:solarized_termcolors=256
+
 colorscheme slate
 
+ 
 " Quickly save your file.
 map <leader>w :w!<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" To make this Section possible run this:
-" curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader=","
 
+
+
+" Plugin Section
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" Git Plugins
+Plugin 'tpope/vim-fugitive'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+" Syntax Plugins
+Plugin 'vim-scripts/nginx.vim'
+Plugin 'markcornick/vim-vagrant'
+Plugin 'scrooloose/syntastic'
+Plugin 'ekalinin/dockerfile.vim'
+
+" Convinience
+Plugin 'valloric/youcompleteme'
+Plugin 'godlygeek/tabular'
+Plugin 'yggdroot/indentline'
+Plugin 'tpope/vim-surround'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'myusuf3/numbers.vim'
+Plugin 'easymotion/vim-easymotion'
+
+
+" Color Schemes
+Plugin 'flazz/vim-colorschemes'
+Plugin 'altercation/vim-colors-solarized'
+
+call vundle#end()            " required
+
+filetype plugin indent on    " required
 " Specify a directory for plugins
-call plug#begin('~/.vim/plugged')
-
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'vim-scripts/nginx.vim'
-Plug 'markcornick/vim-vagrant'
-Plug 'scrooloose/syntastic'
-" Plug 'valloric/youcompleteme'
-Plug 'altercation/vim-colors-solarized'
-Plug 'godlygeek/tabular'
-Plug 'yggdroot/indentline'
-Plug 'tpope/vim-surround'
-Plug 'christoomey/vim-tmux-navigator'
-
-call plug#end()
 
 " Syntastic Settings
 set statusline+=%#warningmsg#
@@ -92,4 +121,6 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 
-" Vim-Tmux-Navigator
+" YouCompleteMe
+let g:ycm_keep_logfiles = 1
+let g:ycm_log_level = 'debug'
