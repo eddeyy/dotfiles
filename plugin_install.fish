@@ -7,3 +7,5 @@ fisher omf/plugin-expand
 fisher fzf
 fisher z
 fisher omf/plugin-vi-mode
+
+cp ./fish_user_key_bindings.fish ~/.config/fish/functions/fish_user_key_bindings.fish
