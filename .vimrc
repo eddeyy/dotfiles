@@ -58,7 +58,9 @@ set noswapfile
 
 " Specifiy a color scheme.
 
-colorscheme slate
+colorscheme molokai
+
+let &colorcolumn="80,".join(range(120,999),",")
 
  
 " Quickly save your file.
@@ -68,8 +70,7 @@ let mapleader=","
 
 
 
-" Plugin Section
-
+" Plugin Section 
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -97,14 +98,23 @@ Plugin 'tpope/vim-surround'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'melonmanchan/vim-tmux-resizer'
 
+" Python
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'nvie/vim-flake8'
+Plugin 'tell-k/vim-autopep8'
+
+" JSON
+Plugin 'elzr/vim-json'
 
 " Color Schemes
 Plugin 'flazz/vim-colorschemes'
-Plugin 'altercation/vim-colors-solarized'
+
+
 
 call vundle#end()            " required
 
@@ -113,14 +123,30 @@ filetype plugin indent on    " required
 
 " Syntastic Settings
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{syntasticStatuslineFlag()}
 set statusline+=%*
+let g:syntastic_python_pylint_post_args="--max-line-length=120"
 
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 
-" YouCompleteMe
+" youcompleteme
 let g:ycm_keep_logfiles = 1
 let g:ycm_log_level = 'debug'
+
+" vim-tmux-resize
+let g:tmux_resizer_no_mappings = 0
+nnoremap <silent> <C-a> :TmuxResizeLeft<cr>
+nnoremap <silent> <C-s> :TmuxResizeDown<cr>
+nnoremap <silent> <C-w> :TmuxResizeUp<cr>
+nnoremap <silent> <C-d> :TmuxResizeRight<cr>
+
+" ultisnips & vim-snippets
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-s>"
+let g:UltiSnipsJumpForwardTrigger="<c-d>"
+let g:UltiSnipsJumpBackwardTrigger="<c-a>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
