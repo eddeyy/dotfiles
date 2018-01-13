@@ -58,9 +58,9 @@ set noswapfile
 
 " Specifiy a color scheme.
 
-colorscheme molokai
+" colorscheme molokai
 
-let &colorcolumn="80,".join(range(120,999),",")
+" let &colorcolumn="80,".join(range(120,999),",")
 
  
 " Quickly save your file.
