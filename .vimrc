@@ -56,9 +56,11 @@ set title
 set nobackup
 set noswapfile
 
-" Specifiy a color scheme.
+" invisible characters
+set listchars=tab:▸\ ,eol:¬
+highlight NonText guifg=#666666
+highlight SpecialKey guifg=#666666
 
-" colorscheme molokai
 
 " let &colorcolumn="80,".join(range(120,999),",")
 
@@ -106,6 +108,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'nvie/vim-flake8'
 Plugin 'tell-k/vim-autopep8'
+Plugin 'majutsushi/tagbar'
 
 " JSON
 Plugin 'elzr/vim-json'
@@ -115,6 +118,8 @@ Plugin 'flazz/vim-colorschemes'
 
 call vundle#end()            " required
 
+let g:indentLine_color_term = 239
+let g:indentLine_char = '¦'
 filetype plugin indent on    " required
 " Specify a directory for plugins
 

@@ -5,19 +5,33 @@ params="-sf"
 # Store where the script was called 
 script_home="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+########################### Tmux #######################
+sudo apt-get install tmux
+tmux start-server
+# create a new session but don't attach to it either
+tmux new-session -d
+# install the plugins
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
+# killing the server is not required, I guess
+tmux kill-server
 
-# Add solarized colors for vim if not present
-# if [ ! -f $HOME/.vim/colors/solarized.vim ]; then
-#      curl -fLo $HOME/.vim/colors/solarized.vim --create-dirs \
-#      https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim
-# fi
+
+########################### VIM ########################
 
 # Add vim-plug. Necessary for vim plugins
-if [ ! -f $HOME/.vim/autoload/plug.vim ]; then
-    curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if [ ! -f $HOME/.vim/bundle/Vundle.vim ]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
-    
+
+# Compile YCM if installed.
+if [ ! -f $HOME/.vim/bundle/youcompleteme ]; then
+    /bin/bash $HOME/.vim/bundle/youcompleteme/install.sh
+fi
+
+vim -c 'PluginInstall'
+
+########################## Fish #######################
+
 # Install fish-shell
 if [ ! -f $HOME/.config/fish ]; then
     sudo apt-get install fish
