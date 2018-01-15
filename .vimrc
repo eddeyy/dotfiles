@@ -69,7 +69,6 @@ map <leader>w :w!<cr>
 let mapleader=","
 
 
-
 " Plugin Section 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -113,8 +112,6 @@ Plugin 'elzr/vim-json'
 
 " Color Schemes
 Plugin 'flazz/vim-colorschemes'
-
-
 
 call vundle#end()            " required
 
