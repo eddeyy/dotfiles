@@ -63,21 +63,35 @@ set noswapfile
 set listchars=tab:▸\ ,eol:¬
 set list
 
-let &colorcolumn="120"
+"let &colorcolumn="120"
 
 " Quickly save your file.
 map <leader>w :w!<cr>
 
-let mapleader=","
-
 set termguicolors
+
+" Neovim Settings
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+" Remember cursor position between vim sessions
+autocmd BufReadPost *
+        \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+        \   exe "normal! g'\"" |
+        \ endif
+" Center buffer around cursor when opening files
+autocmd BufRead * normal zz
+
 
 " Searching
 set incsearch
 set hlsearch
 
+
+let mapleader=","
+
 "Mappings
-nnoremap <leader><space> :nohlsearch<CR>
+map <esc> :noh<CR>
 nnoremap <leader>u :MundoToggle<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>t :TagbarToggle<CR>
@@ -85,6 +99,24 @@ nnoremap <leader>t :TagbarToggle<CR>
 "Mappings Edit
 nnoremap <leader>ev :vsp ~/.config/nvim/init.vim<CR>
 nnoremap <leader>et :vsp ~/.tmux.conf<CR>
+
+imap ,x <esc>
+
+vnoremap <C-c> "*y<CR>
+
+"Shows to what the elements on cursor belongs to
+nnoremap <leader>? :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+    if !exists("*synstack")
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+"Tabs switch
+" nmap <tab> gt
+" nmap <s-tab> gT
+
 
 " set the runtime path to include Vundle and initialize
 call plug#begin('~/.vim/plugged')
@@ -100,11 +132,12 @@ Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Syntax Plugins
 Plug 'vim-scripts/nginx.vim'
 Plug 'markcornick/vim-vagrant'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
+Plug 'neomake/neomake'
 Plug 'ekalinin/dockerfile.vim'
 
 " Convinience
-Plug 'valloric/youcompleteme'
+" Plug 'valloric/youcompleteme'
 Plug 'godlygeek/tabular'
 Plug 'yggdroot/indentline'
 Plug 'tpope/vim-surround'
@@ -117,13 +150,26 @@ Plug 'dhruvasagar/vim-zoom'
 Plug 'vim-scripts/ZoomWin'
 Plug 'majutsushi/tagbar'
 Plug 'simnalamburt/vim-mundo'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+
+
+" Plug 'ryanoasis/vim-devicons' <= TODO
+
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/neco-vim'
+  Plug 'Shougo/neoinclude.vim'
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 
 " Python
-" Plugin 'SirVer/ultisnips'
-" Plugin 'honza/vim-snippets'
-" Plugin 'nvie/vim-flake8'
 Plug 'tell-k/vim-autopep8'
-" Plug 'python-mode/python-mode'
 
 " JSON
 Plug 'elzr/vim-json'
@@ -133,6 +179,30 @@ Plug 'morhetz/gruvbox'
 Plug 'iCyMind/NeoSolarized'
 
 call plug#end()
+
+
+"NERD Commenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
 
 
 " IndentLine Config
@@ -153,22 +223,6 @@ set background=dark
 " let g:neosolarized_bold = 1
 " let g:neosolarized_underline = 1
 " let g:neosolarized_italic = 1
-
-
-" Syntastic Settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_python_flake8_args='--ignore=E501'
-let g:syntastic_python_pylint_post_args="--max-line-length=120"
-
-
 
 " youcompleteme
 let g:ycm_keep_logfiles = 1
