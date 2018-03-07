@@ -26,15 +26,6 @@ alias mv="mv -i"
 alias cp="cp -i"
 alias ln="ln -i"
 
-## get top process eating cpu ##
-alias pscpu="ps auxf; and sort -nr -k 3"
-alias pscpu10="ps auxf | sort -nr -k 3 | head -10"
-
-## get top process eating memory
-alias psmem="ps auxf | sort -nr -k 4"
-alias psmem10="ps auxf | sort -nr -k 4 | head -10"
-
-
 alias update="sudo apt-get update; and sudo apt-get upgrade"
 
 ## Antlr4
