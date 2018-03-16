@@ -36,3 +36,22 @@ alias grun='java org.antlr.v4.gui.TestRig'
 # Turn off Vi-Indicator
 function fish_mode_prompt
 end
+
+# Partitions
+# UUIDs: ls -l /dev/disk/by-uuid
+# Configuration in /etc/fstab
+
+
+# Find files and mv to dir:
+# find path_A -name '*AAA*' -exec mv -t path_B {} +
+
+
+# Find duplikates:
+# find Pictures/  -type f -exec md5sum '{}' ';' | sort | uniq --all-repeated=separate -w 15 > dupes.txt
+
+# Delete Files under certain size
+# find . -name "*.tif" -size -160k -delete
+
+
+# Erase Disk:
+# sudo shred -v -n1 -z/dev/...
