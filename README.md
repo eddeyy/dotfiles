@@ -4,7 +4,7 @@
 
 ### Install all at once
 ```
-$ https://github.com/eddeyy/dotfiles.git
+$ git clone https://github.com/eddeyy/dotfiles.git
 $ cd dotfiles
 $ /bin/bash setup.sh
 ```

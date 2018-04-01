@@ -9,7 +9,7 @@ sudo apt-get update -y
 sudo apt-get install fish -y
 
 # Install fisherman (Plugin Manager for fish)
-if [ ! -f $HOME/.config/fish ]; then
+if [ ! -f $HOME/.config/fish/functions/fisher.fish ]; then
     curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 fi
 

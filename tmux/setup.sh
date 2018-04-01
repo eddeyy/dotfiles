@@ -13,6 +13,7 @@ script_home="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # automake, pkg-config as well as libevent and ncurses libraries and headers.)
 sudo apt-get -y remove tmux
 sudo apt-get -y install wget tar libevent-dev libncurses-dev
+sudo apt-get -y install automake make pkg-config autoconf
 wget https://github.com/tmux/tmux/releases/download/${VERSION}/tmux-${VERSION}.tar.gz
 tar xf tmux-${VERSION}.tar.gz
 rm -f tmux-${VERSION}.tar.gz
