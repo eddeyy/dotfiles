@@ -28,10 +28,13 @@ alias ln="ln -i"
 
 alias update="sudo apt-get update; and sudo apt-get upgrade"
 
+alias v="vim"
+
 ## Antlr4
 alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.7.1-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
 alias grun='java org.antlr.v4.gui.TestRig'
 
+alias r="ranger"
 
 # Turn off Vi-Indicator
 function fish_mode_prompt

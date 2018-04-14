@@ -3,6 +3,7 @@
 "                            Author: Eduard Leonhardt                          "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
 " Save 1,000 items in history
 set history=1000
 
@@ -68,8 +69,6 @@ set list
 " Quickly save your file.
 map <leader>w :w!<cr>
 
-set termguicolors
-
 " Neovim Settings
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -99,6 +98,10 @@ nnoremap <leader>t :TagbarToggle<CR>
 "Mappings Edit
 nnoremap <leader>ev :vsp ~/.config/nvim/init.vim<CR>
 nnoremap <leader>et :vsp ~/.tmux.conf<CR>
+nnoremap <leader>ei :vsp ~/.config/i3/config<CR>
+nnoremap <leader>ef :vsp ~/.config/fish/config.fish<CR>
+nnoremap <leader>er :vsp ~/.config/ranger/rc.conf<CR>
+nnoremap <leader>eb :vsp ~/.scripts/backup_tool/do_backup.sh<CR>
 
 imap ,x <esc>
 
@@ -128,6 +131,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Git Plugins
 Plug 'tpope/vim-fugitive'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'airblade/vim-gitgutter'
 
 " Syntax Plugins
 Plug 'vim-scripts/nginx.vim'
@@ -136,6 +140,7 @@ Plug 'markcornick/vim-vagrant'
 Plug 'neomake/neomake'
 Plug 'ekalinin/dockerfile.vim'
 Plug 'dag/vim-fish'
+Plug 'PotatoesMaster/i3-vim-syntax'
 " Plug 'ryanoasis/vim-devicons' <= TODO
 
 " Convinience
@@ -203,15 +208,20 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 
 
-
 " IndentLine Config
-let g:indentLine_color_gui = '#4c4c4b'
+let g:indentLine_setColors = 239
+let g:indentLine_color_term = 239
 let g:indentLine_fileTypeExclude=['tex', 'json']
 " let g:indentLine_setColors= 1
 
 "GRUVBOX
+set t_Co=256
 colorscheme gruvbox
+set nocompatible
+syntax on
 set background=dark
+" highlight Normal guibg=none
+" highlight NonText guibg=none
 
 " Solarized
 " colorscheme NeoSolarized
