@@ -220,7 +220,7 @@ colorscheme gruvbox
 set nocompatible
 syntax on
 set background=dark
-" highlight Normal guibg=none
+highlight Normal guibg=none ctermbg=none
 " highlight NonText guibg=none
 
 " Solarized

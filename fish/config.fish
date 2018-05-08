@@ -35,6 +35,7 @@ alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.7.1-complete.jar:$CLASSP
 alias grun='java org.antlr.v4.gui.TestRig'
 
 alias r="ranger"
+alias backup_pi="/bin/bash /home/eddie/.scripts/backup_tool/do_backup.sh"
 
 # Turn off Vi-Indicator
 function fish_mode_prompt
