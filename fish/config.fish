@@ -8,6 +8,14 @@ alias ....="cd ../../../../"
 alias .4="cd ../../../../"
 alias .5="cd ../../../../.."
 
+alias cddp="cd ~/Projects/DorkPot"
+alias cdd="cd ~/Downloads"
+alias cdp="cd ~/Projects"
+alias cddoc="cd ~/Documents"
+alias cdg="cd ~/Git"
+alias cds="cd ~/Seafile"
+alias cdc="cd ~/Courses"
+
 alias h="history"
 
 alias ports="netstat -tulanp"

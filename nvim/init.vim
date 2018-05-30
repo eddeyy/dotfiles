@@ -105,6 +105,8 @@ nnoremap <leader>eb :vsp ~/.scripts/backup_tool/do_backup.sh<CR>
 
 imap ,x <esc>
 
+nnoremap <leader>y "+y
+
 vnoremap <C-c> "*y<CR>
 
 "Shows to what the elements on cursor belongs to
@@ -159,6 +161,9 @@ Plug 'majutsushi/tagbar'
 Plug 'simnalamburt/vim-mundo'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ekalinin/Dockerfile.vim'
+
 
 
 if has('nvim')
