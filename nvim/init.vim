@@ -103,7 +103,10 @@ nnoremap <leader>ef :vsp ~/.config/fish/config.fish<CR>
 nnoremap <leader>er :vsp ~/.config/ranger/rc.conf<CR>
 nnoremap <leader>eb :vsp ~/.scripts/backup_tool/do_backup.sh<CR>
 
+"Instert Mappings
 imap ,x <esc>
+imap ,: <esc>A:<esc>
+imap ,; <esc>A;<esc>
 
 nnoremap <leader>y "+y
 
